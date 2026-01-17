@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { TonConnectButton, useTonConnectUI, useTonAddress } from '@tonconnect/ui-react';
-import { toNano } from '@ton/core';
+import { toNano, Address } from '@ton/core';
 
-const CREATOR_ADDRESS = "UQDa81-0T00_M5o2A6x4d8wE0G9e0g0R6G6E7v6R6_6E2v0_";
-const PLATFORM_ADDRESS = "UQDa81-0T00_M5o2A6x4d8wE0G9e0g0R6G6E7v6R6_6E2v0_";
+const CREATOR_ADDRESS = "0QBt1ncs-5sxTc_4Co5RW-HfLre73ZTnjMPmE_MMLOdQ6THB";
+const PLATFORM_ADDRESS = "0QBt1ncs-5sxTc_4Co5RW-HfLre73ZTnjMPmE_MMLOdQ6THB";
 
 const TonPayment = () => {
     const [tonConnectUI] = useTonConnectUI();
@@ -26,11 +26,11 @@ const TonPayment = () => {
                 validUntil: Math.floor(Date.now() / 1000) + 600,
                 messages: [
                     {
-                        address: CREATOR_ADDRESS,
+                        address: Address.parse(CREATOR_ADDRESS).toString({ testOnly: true, bounceable: false }),
                         amount: toNano('0.95').toString()
                     },
                     {
-                        address: PLATFORM_ADDRESS,
+                        address: Address.parse(PLATFORM_ADDRESS).toString({ testOnly: true, bounceable: false }),
                         amount: toNano('0.05').toString()
                     }
                 ]

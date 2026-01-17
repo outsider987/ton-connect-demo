@@ -68,12 +68,8 @@ export default defineConfig({
   ],
   server: {
     // Explicit host allowlist for tunnels (ngrok, etc.)
-    allowedHosts: [
-      '.ngrok-free.app',
-      '.ngrok-free.dev',
-      'localhost',
-      '127.0.0.1'
-    ],
+    // Explicit host allowlist for tunnels (ngrok, etc.)
+    allowedHosts: true,
     host: true
   }
 })
