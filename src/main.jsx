@@ -7,7 +7,8 @@ import App from './App.jsx'
 
 // Use current window location to construct manifest URL dynamically
 // This ensures it works on Localhost, IP, Ngrok, etc. automatically
-const manifestUrl = `${window.location.protocol}//${window.location.host}/tonconnect-manifest.json`;
+// Use a public manifest to avoid Localtunnel/Ngrok blocking issues
+const manifestUrl = 'https://ton-connect.github.io/demo-dapp-with-react-ui/tonconnect-manifest.json';
 const testnetWalletList = 'https://ton-connect.github.io/wallets-list/tonconnect-testnet.json';
 
 createRoot(document.getElementById('root')).render(

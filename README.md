@@ -49,3 +49,7 @@ server: {
 ## 功能
 -   **/usdt**: 鑄造 (Mint) 測試用 USDT 並支付 0.1 USDT (分帳: 0.095 + 0.005)。
 -   **/ton**: 支付 1 TON (分帳: 0.95 + 0.05)。
+
+## 常用資訊 (Useful Info)
+- **管理員錢包 (Admin Wallet)**: `0QDpi4DyMYYgXSm2bZwoXgCRrI9BnB-VtKNnrUSWti2S3gc3`
+- **Mock USDT 合約地址**: `EQDkLEEFuf-9IWVPbRRCeURbAeV4mTnPdEqhUw_ZUeKGNT_C`

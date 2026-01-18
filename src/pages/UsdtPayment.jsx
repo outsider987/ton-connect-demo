@@ -16,11 +16,10 @@ const TONAPI_URL = 'https://testnet.tonapi.io';
 const TONAPI_KEY = import.meta.env.VITE_TONAPI_KEY;
 // Jetton 轉帳 OpCode
 const JETTON_TRANSFER_OPCODE = 0xf8a7ea5;
-const MINT_OPCODE = 21; // Mint OpCode for Standard Jetton
-// 創作者地址 (寫死)
-const CREATOR_ADDRESS = "UQDa81-0T00_M5o2A6x4d8wE0G9e0g0R6G6E7v6R6_6E2v0_";
-// 平台地址 (寫死)
-const PLATFORM_ADDRESS = "UQDa81-0T00_M5o2A6x4d8wE0G9e0g0R6G6E7v6R6_6E2v0_";
+// 創作者地址
+const CREATOR_ADDRESS = "0QBt1ncs-5sxTc_4Co5RW-HfLre73ZTnjMPmE_MMLOdQ6THB";
+// 平台地址
+const PLATFORM_ADDRESS = "0QBt1ncs-5sxTc_4Co5RW-HfLre73ZTnjMPmE_MMLOdQ6THB";
 
 // USDT 精度 (Decimals)
 const USDT_DECIMALS = 6;
@@ -127,20 +126,21 @@ function UsdtPayment() {
             console.log("您的 USDT 子錢包地址:", myUsdtWallet);
 
             // B. 定義接收者名單 (模擬 0.095 給創作者, 0.005 給平台)
+            // B. 定義接收者名單 (模擬 0.095 給創作者, 0.005 給平台)
             const recipients = [
                 {
-                    address: "UQDa81-0T00_M5o2A6x4d8wE0G9e0g0R6G6E7v6R6_6E2v0_", // 創作者地址 (範例)
+                    address: CREATOR_ADDRESS,
                     amount: 0.095
                 },
                 {
-                    address: "UQDa81-0T00_M5o2A6x4d8wE0G9e0g0R6G6E7v6R6_6E2v0_", // 平台地址 (範例同上)
+                    address: PLATFORM_ADDRESS,
                     amount: 0.005
                 }
             ];
 
             // C. 構建交易陣列 (Messages)
             const messages = recipients.map((recipient) => ({
-                address: myUsdtWallet, // 注意！！！目標地址是自己的子錢包
+                address: Address.parse(myUsdtWallet).toString(), // 注意！！！目標地址是自己的子錢包 (需轉為 User-Friendly)
                 amount: toNano('0.05').toString(), // 這是附帶的 Gas (TON)，每筆建議 0.05
                 payload: createJettonTransferBody(
                     recipient.address,
@@ -162,7 +162,7 @@ function UsdtPayment() {
 
         } catch (error) {
             console.error("交易失敗", error);
-            alert("交易取消或失敗。");
+            alert(`交易取消或失敗: ${error.message || JSON.stringify(error)}`);
         } finally {
             setIsProcessing(false);
         }
