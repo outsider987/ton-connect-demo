@@ -52,4 +52,6 @@ server: {
 
 ## 常用資訊 (Useful Info)
 - **管理員錢包 (Admin Wallet)**: `0QDpi4DyMYYgXSm2bZwoXgCRrI9BnB-VtKNnrUSWti2S3gc3`
+
+- **客戶錢包**: `0QB1lccQV3Bo0iZWMdM-hTAougc_vZTArh7FkDOukhn78nB6`
 - **Mock USDT 合約地址**: `EQDkLEEFuf-9IWVPbRRCeURbAeV4mTnPdEqhUw_ZUeKGNT_C`
